@@ -32,7 +32,7 @@ goal clerk send [flags]
 
   -a, --amount uint                 The amount to be transferred (required), in microAlgos
 
-      --argb64 strings              base64 encoded args to pass to transaction logic
+      --argb64 strings              Base64 encoded args to pass to transaction logic
 
   -c, --close-to string             Close account and send remainder to this address
 
@@ -48,7 +48,7 @@ goal clerk send [flags]
 
   -f, --from string                 Account address to send the money from (If not specified, uses default account)
 
-  -F, --from-program string         Program source to use as account logic
+  -F, --from-program string         Program source file to use as account logic
 
   -P, --from-program-bytes string   Program binary to use as account logic
 
