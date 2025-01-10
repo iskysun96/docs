@@ -46,21 +46,27 @@ indexer daemon [flags]
 
       --default-balances-limit uint32          set the default Limit parameter for querying balances, if none is provided (default 1000)
 
+      --default-blocks-limit uint32            set the default Limit parameter for querying blocks, if none is provided (default 100)
+
       --default-boxes-limit uint32             set the default allowed Limit parameter for searching an app's boxes (default 1000)
 
       --default-transactions-limit uint32      set the default Limit parameter for querying transactions, if none is provided (default 1000)
 
-      --dev-mode                               allow performance intensive operations like searching for accounts at a particular round
+      --dev-mode                               has no effect currently, reserved for future performance intensive operations
 
   -n, --dummydb                                use dummy indexer db
 
       --enable-all-parameters                  override default configuration and enable all parameters. Can't be used with --api-config-file
+
+      --enable-private-network-access-header   respond to Private Network Access preflight requests
 
   -h, --help                                   help for daemon
 
   -f, --logfile string                         file to write logs to, if unset logs are written to standard out
 
   -l, --loglevel string                        verbosity of logs: [error, warn, info, debug, trace] (default "info")
+
+      --max-account-list-size uint32           set the maximum number of items for query parameters that accept account lists. Set zero for no limit (default 50)
 
       --max-accounts-limit uint32              set the maximum allowed Limit parameter for querying accounts (default 1000)
 
@@ -71,6 +77,8 @@ indexer daemon [flags]
       --max-assets-limit uint32                set the maximum allowed Limit parameter for querying assets (default 1000)
 
       --max-balances-limit uint32              set the maximum allowed Limit parameter for querying balances (default 10000)
+
+      --max-blocks-limit uint32                set the maximum allowed Limit parameter for querying blocks (default 1000)
 
       --max-boxes-limit uint32                 set the maximum allowed Limit parameter for searching an app's boxes (default 10000)
 
