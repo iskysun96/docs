@@ -236,7 +236,7 @@ GET /v2/accounts/{address}
 
 
 **Description**
-Given a specific account public key, this call returns the accounts status, balance and spendable amounts
+Given a specific account public key, this call returns the account's status, balance and spendable amounts
 
 
 **Parameters**
@@ -672,6 +672,7 @@ GET /v2/blocks/{round}
 |---|---|---|---|
 |**Path**|**round**  <br>*required*|The round from which to fetch block information.|integer|
 |**Query**|**format**  <br>*optional*|Configures whether the response object is JSON or MessagePack encoded. If not provided, defaults to JSON.|enum (json, msgpack)|
+|**Query**|**header-only**  <br>*optional*|If true, only the block header (exclusive of payset or certificate) may be included in response.|boolean|
 
 
 **Responses**
