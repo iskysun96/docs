@@ -98,7 +98,7 @@ Returns the entire genesis file in json.
 
 |HTTP Code|Description|Schema|
 |---|---|---|
-|**200**|The genesis file in json.|string|
+|**200**|The genesis file in json.|[Genesis](#genesis)|
 |**default**|Unknown Error|No Content|
 
 
@@ -236,7 +236,7 @@ GET /v2/accounts/{address}
 
 
 **Description**
-Given a specific account public key, this call returns the accounts status, balance and spendable amounts
+Given a specific account public key, this call returns the account's status, balance and spendable amounts
 
 
 **Parameters**
@@ -672,6 +672,7 @@ GET /v2/blocks/{round}
 |---|---|---|---|
 |**Path**|**round**  <br>*required*|The round from which to fetch block information.|integer|
 |**Query**|**format**  <br>*optional*|Configures whether the response object is JSON or MessagePack encoded. If not provided, defaults to JSON.|enum (json, msgpack)|
+|**Query**|**header-only**  <br>*optional*|If true, only the block header (exclusive of payset or certificate) may be included in response.|boolean|
 
 
 **Responses**
@@ -2532,6 +2533,7 @@ Stores the global information associated with an application.
 |**global-state**  <br>*optional*|\[gs\] global state|[TealKeyValueStore](#tealkeyvaluestore)|
 |**global-state-schema**  <br>*optional*|\[gsch\] global schema|[ApplicationStateSchema](#applicationstateschema)|
 |**local-state-schema**  <br>*optional*|\[lsch\] local schema|[ApplicationStateSchema](#applicationstateschema)|
+|**version**  <br>*optional*|\[v\] the number of updates to the application programs|integer|
 
 
 <a name="applicationstateoperation"></a>
@@ -2800,6 +2802,46 @@ Key-value pairs for StateDelta.
 |---|---|
 |**key**  <br>*required*|string|
 |**value**  <br>*required*|[EvalDelta](#evaldelta)|
+
+
+<a name="genesis"></a>
+### Genesis
+
+|Name|Schema|
+|---|---|
+|**alloc**  <br>*required*|< [GenesisAllocation](#genesisallocation) > array|
+|**comment**  <br>*optional*|string|
+|**devmode**  <br>*optional*|boolean|
+|**fees**  <br>*required*|string|
+|**id**  <br>*required*|string|
+|**network**  <br>*required*|string|
+|**proto**  <br>*required*|string|
+|**rwd**  <br>*required*|string|
+|**timestamp**  <br>*required*|integer (int64)|
+
+
+<a name="genesisallocation"></a>
+### GenesisAllocation
+
+|Name|Schema|
+|---|---|
+|**addr**  <br>*required*|string|
+|**comment**  <br>*required*|string|
+|**state**  <br>*required*|[state](#genesisallocation-state)|
+
+<a name="genesisallocation-state"></a>
+**state**
+
+|Name|Schema|
+|---|---|
+|**algo**  <br>*required*|integer (uint64)|
+|**onl**  <br>*optional*|integer|
+|**sel**  <br>*optional*|string|
+|**stprf**  <br>*optional*|string|
+|**vote**  <br>*optional*|string|
+|**voteFst**  <br>*optional*|integer (uint64)|
+|**voteKD**  <br>*optional*|integer (uint64)|
+|**voteLst**  <br>*optional*|integer (uint64)|
 
 
 <a name="kvdelta"></a>
